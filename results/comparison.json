@@ -1,0 +1,587 @@
+{
+  "template_test": {
+    "runs": {
+      "base_zero": {
+        "cases": 54,
+        "json_validity": 1.0,
+        "schema_validity": 0.8704,
+        "exact_match": 0.0,
+        "field_accuracy": {
+          "queue": 0.2037,
+          "priority": 0.3519,
+          "order_id": 0.8704,
+          "needs_review": 0.2963
+        },
+        "latency_mean_ms": 3832.59,
+        "latency_median_ms": 3588.3,
+        "review_recall": 0.4762,
+        "errors": [
+          {
+            "id": "case-0002-base",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "manual"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "case-0007-base",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "normal",
+              "queue": "delivery"
+            },
+            "prediction": null
+          },
+          {
+            "id": "case-0019-base",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-10019",
+              "priority": "normal",
+              "queue": "technical"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-10019",
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "case-0022-base",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "normal",
+              "queue": "manual"
+            },
+            "prediction": null
+          },
+          {
+            "id": "case-0045-base",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "manual"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          }
+        ]
+      },
+      "base_few": {
+        "cases": 54,
+        "json_validity": 1.0,
+        "schema_validity": 1.0,
+        "exact_match": 0.3889,
+        "field_accuracy": {
+          "queue": 0.6667,
+          "priority": 0.9259,
+          "order_id": 0.9444,
+          "needs_review": 0.6667
+        },
+        "latency_mean_ms": 3424.53,
+        "latency_median_ms": 3284.91,
+        "review_recall": 0.4762,
+        "errors": [
+          {
+            "id": "case-0002-base",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "manual"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "case-0007-base",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "normal",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": false,
+              "order_id": "ORD-10016",
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "case-0045-base",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "manual"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "case-0047-base",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-10047",
+              "priority": "critical",
+              "queue": "technical"
+            },
+            "prediction": {
+              "needs_review": false,
+              "order_id": "ORD-10047",
+              "priority": "normal",
+              "queue": "technical"
+            }
+          },
+          {
+            "id": "case-0064-base",
+            "target": {
+              "needs_review": true,
+              "order_id": "ORD-10064",
+              "priority": "low",
+              "queue": "manual"
+            },
+            "prediction": {
+              "needs_review": false,
+              "order_id": "ORD-10064",
+              "priority": "low",
+              "queue": "manual"
+            }
+          }
+        ]
+      },
+      "lora_base": {
+        "cases": 54,
+        "json_validity": 1.0,
+        "schema_validity": 1.0,
+        "exact_match": 1.0,
+        "field_accuracy": {
+          "queue": 1.0,
+          "priority": 1.0,
+          "order_id": 1.0,
+          "needs_review": 1.0
+        },
+        "latency_mean_ms": 3807.84,
+        "latency_median_ms": 3561.82,
+        "review_recall": 1.0,
+        "errors": []
+      },
+      "lora_augmented": {
+        "cases": 54,
+        "json_validity": 1.0,
+        "schema_validity": 1.0,
+        "exact_match": 1.0,
+        "field_accuracy": {
+          "queue": 1.0,
+          "priority": 1.0,
+          "order_id": 1.0,
+          "needs_review": 1.0
+        },
+        "latency_mean_ms": 4060.32,
+        "latency_median_ms": 3865.93,
+        "review_recall": 1.0,
+        "errors": []
+      }
+    },
+    "augmented_vs_unaugmented": {
+      "right_only_correct": 0,
+      "left_only_correct": 0
+    }
+  },
+  "challenge": {
+    "runs": {
+      "base_zero": {
+        "cases": 20,
+        "json_validity": 1.0,
+        "schema_validity": 0.95,
+        "exact_match": 0.1,
+        "field_accuracy": {
+          "queue": 0.25,
+          "priority": 0.45,
+          "order_id": 0.95,
+          "needs_review": 0.5
+        },
+        "latency_mean_ms": 3694.62,
+        "latency_median_ms": 3714.03,
+        "review_recall": 0.875,
+        "errors": [
+          {
+            "id": "challenge-001",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-21001",
+              "priority": "critical",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-21001",
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "challenge-003",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-21003",
+              "priority": "critical",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-21003",
+              "priority": "critical",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "challenge-004",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "low",
+              "queue": "delivery"
+            },
+            "prediction": null
+          },
+          {
+            "id": "challenge-006",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22001",
+              "priority": "critical",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-22001",
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "challenge-007",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          }
+        ]
+      },
+      "base_few": {
+        "cases": 20,
+        "json_validity": 1.0,
+        "schema_validity": 1.0,
+        "exact_match": 0.3,
+        "field_accuracy": {
+          "queue": 0.55,
+          "priority": 0.8,
+          "order_id": 0.95,
+          "needs_review": 0.65
+        },
+        "latency_mean_ms": 3087.7,
+        "latency_median_ms": 3053.68,
+        "review_recall": 0.75,
+        "errors": [
+          {
+            "id": "challenge-001",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-21001",
+              "priority": "critical",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": false,
+              "order_id": "ORD-21001",
+              "priority": "normal",
+              "queue": "delivery"
+            }
+          },
+          {
+            "id": "challenge-004",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "low",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": false,
+              "order_id": null,
+              "priority": "low",
+              "queue": "technical"
+            }
+          },
+          {
+            "id": "challenge-006",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22001",
+              "priority": "critical",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-22001",
+              "priority": "critical",
+              "queue": "billing"
+            }
+          },
+          {
+            "id": "challenge-007",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "billing"
+            }
+          },
+          {
+            "id": "challenge-009",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "delivery"
+            }
+          }
+        ]
+      },
+      "lora_base": {
+        "cases": 20,
+        "json_validity": 1.0,
+        "schema_validity": 1.0,
+        "exact_match": 0.5,
+        "field_accuracy": {
+          "queue": 0.75,
+          "priority": 0.7,
+          "order_id": 1.0,
+          "needs_review": 0.85
+        },
+        "latency_mean_ms": 4293.83,
+        "latency_median_ms": 4303.19,
+        "review_recall": 1.0,
+        "errors": [
+          {
+            "id": "challenge-001",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-21001",
+              "priority": "critical",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": false,
+              "order_id": "ORD-21001",
+              "priority": "normal",
+              "queue": "technical"
+            }
+          },
+          {
+            "id": "challenge-004",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "low",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "low",
+              "queue": "manual"
+            }
+          },
+          {
+            "id": "challenge-005",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-21005",
+              "priority": "normal",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-21005",
+              "priority": "normal",
+              "queue": "manual"
+            }
+          },
+          {
+            "id": "challenge-006",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22001",
+              "priority": "critical",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": false,
+              "order_id": "ORD-22001",
+              "priority": "normal",
+              "queue": "billing"
+            }
+          },
+          {
+            "id": "challenge-007",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "billing"
+            }
+          }
+        ]
+      },
+      "lora_augmented": {
+        "cases": 20,
+        "json_validity": 1.0,
+        "schema_validity": 0.95,
+        "exact_match": 0.4,
+        "field_accuracy": {
+          "queue": 0.6,
+          "priority": 0.75,
+          "order_id": 0.95,
+          "needs_review": 0.7
+        },
+        "latency_mean_ms": 3680.69,
+        "latency_median_ms": 3839.8,
+        "review_recall": 0.875,
+        "errors": [
+          {
+            "id": "challenge-001",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-21001",
+              "priority": "critical",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-21001",
+              "priority": "normal",
+              "queue": "technical"
+            }
+          },
+          {
+            "id": "challenge-005",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-21005",
+              "priority": "normal",
+              "queue": "delivery"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-21005",
+              "priority": "low",
+              "queue": "manual"
+            }
+          },
+          {
+            "id": "challenge-007",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-22002",
+              "priority": "normal",
+              "queue": "billing"
+            }
+          },
+          {
+            "id": "challenge-009",
+            "target": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "critical",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": null,
+              "priority": "normal",
+              "queue": "billing"
+            }
+          },
+          {
+            "id": "challenge-010",
+            "target": {
+              "needs_review": false,
+              "order_id": "ORD-22005",
+              "priority": "normal",
+              "queue": "billing"
+            },
+            "prediction": {
+              "needs_review": true,
+              "order_id": "ORD-22005",
+              "priority": "normal",
+              "queue": "manual"
+            }
+          }
+        ]
+      }
+    },
+    "augmented_vs_unaugmented": {
+      "right_only_correct": 4,
+      "left_only_correct": 6
+    }
+  }
+}

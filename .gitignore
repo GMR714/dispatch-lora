@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+outputs/
+*.safetensors
+*.bin
+.env
+unsloth_compiled_cache/
+data/sft/
+results/*pilot*.jsonl

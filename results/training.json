@@ -1,0 +1,56 @@
+{
+  "runs": {
+    "lora-base": {
+      "model": "Qwen/Qwen3.5-0.8B",
+      "seed": 714,
+      "steps": 60,
+      "train_sha256": "f0866a305c0829a08ca8686440ae66da0ddbf83435d3dc831acb0b065fae22fa",
+      "validation_sha256": "29469e270393477bc136d4063a7661a9ddc13dded0ccf15bd433e2af89646c60",
+      "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "peak_vram_bytes": 2050268672,
+      "elapsed_seconds": 348.98,
+      "versions": {
+        "torch": "2.12.1+cu132",
+        "transformers": "5.5.0",
+        "trl": "0.24.0",
+        "unsloth": "2026.9.10"
+      },
+      "validation_loss_final": 8.97466525202617e-05,
+      "training_examples": 257
+    },
+    "lora-augmented": {
+      "model": "Qwen/Qwen3.5-0.8B",
+      "seed": 714,
+      "steps": 60,
+      "train_sha256": "d2f0c918315578b275a9a7f5a3106b08d03713feb7a540965194fb1ed1a7dae6",
+      "validation_sha256": "29469e270393477bc136d4063a7661a9ddc13dded0ccf15bd433e2af89646c60",
+      "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "peak_vram_bytes": 1984604160,
+      "elapsed_seconds": 276.17,
+      "versions": {
+        "torch": "2.12.1+cu132",
+        "transformers": "5.5.0",
+        "trl": "0.24.0",
+        "unsloth": "2026.9.10"
+      },
+      "validation_loss_final": 0.00026132684433832765,
+      "training_examples": 288
+    }
+  },
+  "evaluation_sha256": "18736a7cd4cf135e946c2d657219381f1e97da48f549add1d287420e7e3da637",
+  "evaluation_cases": 74,
+  "recipe": {
+    "model": "Qwen/Qwen3.5-0.8B",
+    "precision": "bf16",
+    "lora_rank": 16,
+    "lora_alpha": 16,
+    "lora_dropout": 0,
+    "learning_rate": 0.0002,
+    "max_sequence_length": 1024,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "max_steps": 60,
+    "completion_only_loss": true,
+    "seed": 714
+  }
+}

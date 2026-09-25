@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Experimento reproduzível de fine-tuning LoRA, aumento de dados e avaliação pareada em 74 mensagens fictícias.">
+  <title>Dispatch LoRA — caderno de resultados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="#inicio"><span class="brand-mark">D<span>L</span></span><span>Dispatch LoRA</span></a>
+      <nav aria-label="Seções do relatório">
+        <a href="#resultado">Resultado</a>
+        <a href="#metodo">Método</a>
+        <a href="#casos">Casos</a>
+      </nav>
+      <a class="repo-link" href="https://github.com/GMR714/dispatch-lora" target="_blank" rel="noopener noreferrer">Código-fonte ↗</a>
+    </div>
+  </header>
+
+  <main class="shell" id="inicio">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Experimento 01 / adaptação de modelo pequeno</div>
+        <h1>O aumento de dados ajudou onde?</h1>
+        <p>Quatro configurações receberam os mesmos 74 tickets fictícios. Este caderno mostra acertos, erros e exemplos pareados para distinguir melhora real de acerto em frases parecidas com o treino.</p>
+      </div>
+      <aside class="hero-note">
+        <span class="note-label">Leitura do resultado</span>
+        <strong>10/20 vs. 8/20</strong>
+        <p>No conjunto de desafios, o LoRA sem variantes geradas acertou dois casos a mais. Os dois adaptadores acertaram todos os 54 casos do teste baseado nos templates.</p>
+      </aside>
+    </section>
+
+    <section class="section" id="resultado">
+      <div class="section-heading">
+        <div><span class="section-index">01 / Evidência</span><h2>Comparação controlada</h2></div>
+        <div class="segmented" id="split-tabs" role="group" aria-label="Conjunto de avaliação">
+          <button type="button" data-split="challenge" aria-pressed="true">Desafios · 20</button>
+          <button type="button" data-split="template_test" aria-pressed="false">Teste template · 54</button>
+        </div>
+      </div>
+      <p class="section-lede" id="split-description"></p>
+      <div class="metric-grid" id="metric-grid"></div>
+      <div class="analysis-grid">
+        <div class="sheet">
+          <div class="sheet-heading"><h3>Acerto exato</h3><span>Todos os quatro campos corretos</span></div>
+          <div id="accuracy-bars" class="accuracy-bars"></div>
+        </div>
+        <div class="sheet">
+          <div class="sheet-heading"><h3>Acerto por campo</h3><span>Mesmo conjunto, rótulos congelados</span></div>
+          <div id="field-table" class="field-table"></div>
+        </div>
+      </div>
+      <p class="reading-note" id="reading-note"></p>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="section-heading"><div><span class="section-index">02 / Protocolo</span><h2>O que mudou entre os braços</h2></div></div>
+      <div class="method-grid">
+        <article><span>01</span><h3>Origem</h3><p>360 casos sintéticos gerados localmente. Famílias de mensagens foram separadas antes da divisão entre treino, validação e teste.</p></article>
+        <article><span>02</span><h3>Variação</h3><p id="augmentation-method"></p></article>
+        <article><span>03</span><h3>Treino</h3><p id="training-method"></p></article>
+        <article><span>04</span><h3>Avaliação</h3><p>Os quatro braços usam os mesmos IDs, entradas, rótulos e instrução. Saídas inválidas contam como erro; os 20 desafios usam linguagem fora dos templates.</p></article>
+      </div>
+      <div class="protocol-strip" id="protocol-strip"></div>
+    </section>
+
+    <section class="section" id="casos">
+      <div class="section-heading">
+        <div><span class="section-index">03 / Auditoria</span><h2>Examine os casos</h2></div>
+        <span class="section-aside">Previsões registradas, sem inferência nesta página</span>
+      </div>
+      <div class="case-controls">
+        <label>Conjunto <select id="case-split"><option value="challenge">Desafios</option><option value="template_test">Teste template</option></select></label>
+        <label>Comparação LoRA <select id="case-filter"><option value="all">Todos</option><option value="fixed">Aumento corrigiu</option><option value="regressed">Aumento piorou</option><option value="both_right">Ambos corretos</option><option value="both_wrong">Ambos errados</option></select></label>
+        <label class="search-label">Buscar <input id="case-search" type="search" placeholder="ID ou texto do ticket"></label>
+        <span id="case-count" class="case-count"></span>
+      </div>
+      <div class="case-layout">
+        <div class="case-list" id="case-list" aria-label="Casos filtrados"></div>
+        <article class="case-detail" id="case-detail" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <footer>
+      <p>Estudo com dados inteiramente fictícios. O teste baseado em templates não mede generalização ampla; o conjunto de desafios é pequeno e foi avaliado uma única vez.</p>
+      <div><a href="../results/comparison.json">Relatório bruto ↗</a><a href="../results/training.json">Proveniência do treino ↗</a><a href="../data/eval_all.jsonl">Casos congelados ↗</a></div>
+    </footer>
+  </main>
+  <script src="./report-data.js"></script>
+  <script src="./app.js?v=3"></script>
+</body>
+</html>

@@ -2,6 +2,14 @@
 
 A measured small-model adaptation for Portuguese service tickets. A fictional message becomes four fields: routing queue, priority, order reference and whether a person should review it. The project includes data generation, guarded AI paraphrases, two controlled LoRA runs and a frozen evaluation set.
 
+![Dispatch LoRA result dashboard](results/dashboard.png)
+
+## Explore the results
+
+The [static result notebook](docs/index.html) compares all four arms on both evaluation sets and lets you inspect every prediction, including the four cases improved and six cases regressed by augmentation. Its data come only from the checked-in frozen artifacts; opening the page does not run a model or call an API.
+
+From the repository root, run `python -m http.server 8181 --bind 127.0.0.1` and open `http://127.0.0.1:8181/docs/`. Regenerate the embedded case-level data with `python src/dashboard_data.py`; `python src/dashboard_data.py --check` verifies that the published page still matches the evaluation files.
+
 ## Dataset and controls
 
 The 360 seed cases are generated locally from fictional companies and facts. A stable `family_id` is assigned before splitting: 257 train, 49 validation and 54 test. A separate 20-case challenge set uses phrasing outside the seed templates. Labels come from the seed facts, never from the paraphrasing model.

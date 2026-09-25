@@ -17,3 +17,4 @@ jobs:
       - run: python -m unittest discover -s test -v
       - run: python -m compileall -q src
       - run: python src/compare.py --base-zero results/base-zero.jsonl --base-few results/base-few.jsonl --lora-base results/lora-base.jsonl --lora-augmented results/lora-augmented.jsonl
+      - run: python src/dashboard_data.py --check
